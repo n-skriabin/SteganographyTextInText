@@ -44,6 +44,13 @@ namespace SteganographyText
             if (textBox_container.Text != string.Empty) {
 
                 var stringBitArrayMessage = ToBinaryString(Encoding.Unicode, textBox_message.Text);
+
+                if (stringBitArrayMessage == string.Empty)
+                {
+                    MessageBox.Show("Message is empty.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
                 int messageCounter = 0;
                 var stringContainer = textBox_container.Text;
                 var resultCharArrayContainer = textBox_container.Text.ToCharArray();
@@ -76,12 +83,16 @@ namespace SteganographyText
 
                 if (messageCounter < stringBitArrayMessage.Length)
                 {
-                    MessageBox.Show("Container is very small.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Container is very small, or there are not enough characters to encode the message", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 else
                 {
                     textBox_result.Text = new string(resultCharArrayContainer);
                 }
+            }
+            else
+            {
+                MessageBox.Show("Container is empty.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
