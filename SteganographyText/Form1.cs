@@ -110,7 +110,7 @@ namespace SteganographyText
                         stringBitArrayMessage += 1;
                         continue;
                     }
-                    var test = AlphabetDictionary.FirstOrDefault(x => x.Value == sourceMessage[i]).Key;
+                    
                     if (AlphabetDictionary.FirstOrDefault(x => x.Value == sourceMessage[i]).Key != '\0')
                     {
                         stringBitArrayMessage += 0;
